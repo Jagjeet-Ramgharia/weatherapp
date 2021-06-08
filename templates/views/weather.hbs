@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css"
+      integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    {{!-- navigation --}}
+
+    {{>navbar}}
+
+    <!-- main header -->
+    <div class="container-fluid main_header">
+      <div class="row">
+          <div class="col-md-10 col-12 mx-auto">
+              <div class="main_content">
+                  <form class="temp_form">
+                    <input type="text" id="cityName" placeholder="Enter your city name" autocomplete="off"/>
+                    <input type="submit" id="submitbtn" value="Search"/> 
+                  </form>
+              </div>
+              <div class="tempInformation">
+                  <div class="top_layer">
+                      <p id="day"></p>
+                      <p id="date"></p>
+                  </div>
+                  <div class="main_layer">
+                      <p id="city_name">Today Weather</p>
+                      <div class="middle_layer data_hide">
+                          <p id="temp"><span>0</span><sup>o</sup>C</p>
+                          <p id="temp_status"><i class="fa fa-cloud" aria-hidden="true"></i></p>
+                      </div>
+                  </div>
+              </div> 
+          </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <footer>
+        <p>Designed by Jagjeet Ramgharia</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+        const dayofweek = document.getElementById('day');
+        const dateoftoday = document.getElementById('date');
+        const getCurrentDay = () =>{
+            let weekday = Array(7)
+            weekday[0] = "Sun";
+            weekday[1] = "Mon";
+            weekday[2] = "Tue";
+            weekday[3] = "Wed";
+            weekday[4] = "Thu";
+            weekday[5] = "Fri";
+            weekday[6] = "Sat";
+
+            let currentTime = new Date();
+            let day = weekday[currentTime.getDay()];
+            dayofweek.innerHTML = day;
+        }
+        getCurrentDay();
+
+        const time = new Date().toLocaleTimeString();
+        const getTime = () =>{
+          dateoftoday.innerHTML = time;
+        }
+        getTime();
+    </script>
+  </body>
+</html>
